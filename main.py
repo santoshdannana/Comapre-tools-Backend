@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from schemas.request_response import AskRequest, AskResponse
 from services.gemini_client import get_solutions
+import uvicorn
 
 app = FastAPI()
 
@@ -21,3 +22,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000)
+
